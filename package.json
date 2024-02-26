@@ -18,6 +18,8 @@
   "files": [
     "android",
     "ios",
+    "harmony",
+    "src",
     "index.d.ts",
     "react-native-cookies.podspec"
   ],
@@ -45,10 +47,17 @@
     "react-native": ">= 0.60.2"
   },
   "devDependencies": {
+    "react-native": "0.72.5",
     "@react-native-community/eslint-config": "^0.0.6",
     "@react-native-community/eslint-plugin": "^1.0.0",
     "@semantic-release/git": "^8.0.0",
     "eslint": "^6.8.0",
-    "semantic-release": "^17.2.3"
+    "rtn-cookies": "file:rtn-cookies",
+    "semantic-release": "*"
+  },
+  "codegenConfig": {
+    "name": "RNCookiesSpec",
+    "type": "all",
+    "jsSrcsDir": "src"
   }
 }

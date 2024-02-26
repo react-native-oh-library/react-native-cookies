@@ -6,12 +6,12 @@
  */
 
 import { NativeModules, Platform } from 'react-native';
+import RTNCookies from './src/NativeRTNCookies';
 const invariant = require('invariant');
 const RNCookieManagerIOS = NativeModules.RNCookieManagerIOS;
 const RNCookieManagerAndroid = NativeModules.RNCookieManagerAndroid;
 
 let CookieManager;
-
 if (Platform.OS === 'ios') {
   invariant(
     RNCookieManagerIOS,
@@ -24,12 +24,15 @@ if (Platform.OS === 'ios') {
     '@react-native-community/cookies: Import libraries to android "react-native link @react-native-community/cookies"',
   );
   CookieManager = RNCookieManagerAndroid;
+} else if (Platform.OS === 'harmony') {
+  CookieManager = RTNCookies;
 } else {
   invariant(
     CookieManager,
     '@react-native-community/cookies: Invalid platform. This library only supports Android and iOS.',
   );
 }
+
 
 const functions = ['setFromResponse', 'getFromResponse'];
 
@@ -47,8 +50,13 @@ module.exports = {
     }
   },
   removeSessionCookies: async () => {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === 'android' || Platform.OS === 'harmony') {
       return await CookieManager.removeSessionCookies();
+    }
+  },
+  flushForHarmony: (func) => {
+    if (Platform.OS === 'harmony') {
+       CookieManager.flushForHarmony(func);
     }
   },
 };
