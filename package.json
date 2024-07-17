@@ -1,6 +1,6 @@
 {
   "name": "@react-native-oh-tpl/cookies",
-  "version": "6.2.1-0.0.1",
+  "version": "6.2.1-0.0.3",
   "description": "Cookie Manager for React Native",
   "repository": {
     "type": "git",

@@ -1,11 +1,11 @@
 {
   "name": "roh_cookies",
-  "version": "1.0.0",
+  "version": "6.2.1-0.0.3",
   "description": "Please describe the basic information.",
   "main": "Index.ets",
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "rnoh": "file:../rnoh"
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony"
   }
 }
