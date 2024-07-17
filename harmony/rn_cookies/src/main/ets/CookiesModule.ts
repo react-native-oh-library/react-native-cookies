@@ -75,7 +75,7 @@ export class CookiesModule extends TurboModule {
           for (let i = 0 ; i < queryCookieArray.length; i++) {
             let name = queryCookieArray[i].split('=')[0];
             let value = queryCookieArray[i].split('=')[1];
-            cookies['cookies' + i] = { name: name, value: value } as Cookie;
+            cookies[name] = { name: name, value: value } as Cookie;
           }
           resolve(cookies);
         }
