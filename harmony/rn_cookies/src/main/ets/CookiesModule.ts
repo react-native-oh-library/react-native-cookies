@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { TurboModule } from "rnoh/ts";
+import { TurboModule } from '@rnoh/react-native-openharmony/ts';
 import web_webview from '@ohos.web.webview';
 
 export interface Cookie {
