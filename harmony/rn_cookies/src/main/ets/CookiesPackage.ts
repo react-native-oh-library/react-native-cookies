@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { RNPackage, TurboModulesFactory } from 'rnoh/ts';
-import type { TurboModule, TurboModuleContext } from 'rnoh/ts';
+import { RNPackage, TurboModulesFactory } from '@rnoh/react-native-openharmony/ts';
+import type { TurboModule, TurboModuleContext } from '@rnoh/react-native-openharmony/ts';
 import { CookiesModule } from './CookiesModule';
 
 class CookiesModulesFactory extends TurboModulesFactory {
