@@ -34,8 +34,7 @@ declare module '@react-native-cookies/cookies' {
       name: string,
       useWebKit?: boolean,
     ): Promise<boolean>;
-    // Harmony only
-    flushForHarmony(func: Function): Promise<boolean>;
+    
   }
 
   const CookieManager: CookieManagerStatic;

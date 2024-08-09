@@ -150,19 +150,6 @@ export class CookiesModule extends TurboModule {
     }
   }
 
-  flushForHarmony(func: Function): Promise<boolean>{
-    try {
-      return new Promise((resolve) => {
-        func();
-        resolve(true);
-      });
-    } catch(error) {
-      return new Promise((resolve) => {
-        resolve(false);
-      });
-    }
-  }
-
   removeSessionCookies(): Promise<boolean>{
     try {
       web_webview.WebCookieManager.clearSessionCookieSync();

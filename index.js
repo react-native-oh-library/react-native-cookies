@@ -54,11 +54,7 @@ module.exports = {
       return await CookieManager.removeSessionCookies();
     }
   },
-  flushForHarmony: (func) => {
-    if (Platform.OS === 'harmony') {
-       CookieManager.flushForHarmony(func);
-    }
-  },
+ 
 };
 
 for (var i = 0; i < functions.length; i++) {
