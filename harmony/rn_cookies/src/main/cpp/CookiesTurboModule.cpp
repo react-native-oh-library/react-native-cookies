@@ -40,10 +40,6 @@ static jsi::Value __hostFunction_RTNCookiesTurboModule_clearAll(jsi::Runtime &rt
     return static_cast<ArkTSTurboModule &>(turboModule).callAsync(rt, "clearAll", args, count);
 }
 
-static jsi::Value __hostFunction_RTNCookiesTurboModule_flushForHarmony(jsi::Runtime &rt, react::TurboModule &turboModule,
-                                                             const jsi::Value *args, size_t count) {
-    return static_cast<ArkTSTurboModule &>(turboModule).callAsync(rt, "flushForHarmony", args, count);
-}
 static jsi::Value __hostFunction_RTNCookiesTurboModule_removeSessionCookies(jsi::Runtime &rt,
                                                                             react::TurboModule &turboModule,
                                                                             const jsi::Value *args, size_t count) {
@@ -57,6 +53,5 @@ RTNCookiesTurboModule::RTNCookiesTurboModule(const ArkTSTurboModule::Context ctx
     methodMap_["set"] = MethodMetadata{3, __hostFunction_RTNCookiesTurboModule_set};
     methodMap_["clearByName"] = MethodMetadata{3, __hostFunction_RTNCookiesTurboModule_clearByName};
     methodMap_["clearAll"] = MethodMetadata{1, __hostFunction_RTNCookiesTurboModule_clearAll};
-    methodMap_["flushForHarmony"] = MethodMetadata{1, __hostFunction_RTNCookiesTurboModule_flushForHarmony};
     methodMap_["removeSessionCookies"] = MethodMetadata{0, __hostFunction_RTNCookiesTurboModule_removeSessionCookies};
 }
