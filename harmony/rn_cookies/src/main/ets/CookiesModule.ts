@@ -33,7 +33,6 @@ export interface Cookies {
 }
 
 export class CookiesModule extends TurboModule {
-
  clearAll(useWebKit?: boolean): Promise<boolean> {
     try {
       if (useWebKit) {
@@ -87,13 +86,32 @@ export class CookiesModule extends TurboModule {
       });
     }
   }
+  isEmpty(value:string) {
+    return value == null || value.length === 0;
+  }
+
 
   async set(url: string, cookie: Cookie, useWebKit?: boolean): Promise<boolean>{
     try {
-      if (useWebKit) {
-        await web_webview.WebCookieManager.configCookie(url, cookie.name + '=' + cookie.value);
+      let cookieBuilder:string =  cookie.name + '=' + cookie.value
+      const topLevelDomain = url.match(/^https?:\/\/([^/?#]+)(?:[/?#]|$)/i)[1];
+      if (cookie.hasOwnProperty("domain") && !this.isEmpty(cookie.domain)) {
+        let domain = cookie.domain;
+        if (domain.startsWith(".")) {
+          domain = domain.substring(1);
+        }
+        if (topLevelDomain !==domain ) {
+          throw new Error(`Cookie URL host ${topLevelDomain} and domain ${domain} mismatched. The cookie won't set correctly.`);
+        }
+        cookieBuilder+=`;domain = ${domain}`
       } else {
-        web_webview.WebCookieManager.configCookieSync(url, cookie.name + '=' + cookie.value);
+        cookieBuilder +=`;domain = ${topLevelDomain}`
+      }
+
+      if (useWebKit) {
+        await web_webview.WebCookieManager.configCookie(url, cookieBuilder);
+      } else {
+        web_webview.WebCookieManager.configCookieSync(url, cookieBuilder);
       }
       return new Promise((resolve) => {
         resolve(true);
